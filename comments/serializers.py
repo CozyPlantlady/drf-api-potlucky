@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Comment
+from django.contrib.humanize.templatetags.humanize import naturaltime
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -7,6 +8,8 @@ class CommentSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    created_at = serializers.SerializerMethodField()
+    edited_at = serializers.SerializerMethodField()
 
     def validate_image(self, value):
         if value-size > 1024 * 1024 * 2:
@@ -27,6 +30,12 @@ class CommentSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
+    def get_created_at(self, obj):
+        return naturaltime(obj.created_at)
+
+    def get_edited_at(self, obj):
+        return naturaltime(obj.edited_at)
+
     class Meta:
         model = Comment
         fields = [
@@ -37,4 +46,4 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class CommentDetailSerializer(CommentSerializer):
-    recipe = serializers.ReadOnlyField(source='recipe.id')
+    original_recipe = serializers.ReadOnlyField(source='recipe.id')
