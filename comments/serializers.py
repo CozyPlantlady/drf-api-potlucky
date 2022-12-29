@@ -1,4 +1,4 @@
-from rest_frameworks import serializers
+from rest_framework import serializers
 from .models import Comment
 
 
@@ -31,7 +31,8 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = [
             'id', 'owner', 'is_owner', 'created_at', 'edited_at',
-            'original_recipe', 'image', 'content',
+            'original_recipe', 'image', 'content', 'profile_image',
+            'profile_id',
         ]
 
 
