@@ -15,6 +15,7 @@ class RecipeList(generics.ListCreateAPIView):
         'owner__username',
         'title',
         'keywords',
+        'method',
     ]
 
     def perform_create(self, serializer):
