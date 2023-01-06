@@ -7,6 +7,7 @@ from potlucky_drf_api.permissions import IsOwnerOrReadOnly
 class ProfileList(generics.ListAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+    permission_classes = (AllowAny,)
 
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
