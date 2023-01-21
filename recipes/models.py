@@ -13,7 +13,6 @@ class Recipe(models.Model):
     method = models.TextField(blank=True)
     image = models.ImageField(upload_to='images/',
                               default='../default_post_wmlygq', blank=True)
-    url = models.URLField(blank=True)
 
     class Meta:
         ordering = ['-created_at']
