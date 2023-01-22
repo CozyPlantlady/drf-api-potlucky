@@ -22,6 +22,7 @@ class RecipeList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 
+
 class RecipeDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = RecipeSerializer
     permission_classes = [IsOwnerOrReadOnly]

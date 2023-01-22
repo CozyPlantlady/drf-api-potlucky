@@ -9,7 +9,7 @@ class RecipeSerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
 
     def validate_image(self, value):
-        if value-size > 1024 * 1024 * 2:
+        if value.size > 1024 * 1024 * 2:
             raise serializers.ValidationError(
                 'Image size too large. Keep it under 2MB'
             )
