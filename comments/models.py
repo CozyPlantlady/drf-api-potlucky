@@ -8,8 +8,9 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     edited_at = models.DateTimeField(auto_now=True)
     original_recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='images/',
-                              default='../default_post_wmlygq', blank=True)
+    comment_image = models.ImageField(upload_to='images/',
+                                      default='../default_post_wmlygq',
+                                      blank=True)
     content = models.TextField(blank=True)
 
     class Meta:

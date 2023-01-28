@@ -40,7 +40,7 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = [
             'id', 'owner', 'is_owner', 'created_at', 'edited_at',
-            'original_recipe', 'image', 'content', 'profile_image',
+            'original_recipe', 'comment_image', 'content', 'profile_image',
             'profile_id',
         ]
 
