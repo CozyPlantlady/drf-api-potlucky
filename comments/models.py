@@ -17,4 +17,4 @@ class Comment(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return self.content
+        return f'{self.id} {self.title}'
